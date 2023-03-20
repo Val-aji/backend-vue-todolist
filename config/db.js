@@ -6,10 +6,13 @@ const DB_PASSWORD = "x4tcNPTqhlFBytTuCDks"
 const DB_PORT = 5474
 const DB_USER = "root"
 
-const db = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
-    host: DB_HOST,
-    port: DB_PORT,
-    dialect: "mysql"
+const db = new Sequelize({
+  username: DB_USER,
+  password: DB_PASSWORD,
+  database: DB_NAME,
+  dialect: "mysql",
+  port: DB_PORT,
+  host: DB_HOST
 })
 
 db.authenticate()
