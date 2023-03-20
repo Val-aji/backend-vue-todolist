@@ -2,8 +2,6 @@ import clientModels from "../models/clientModels.js";
 import { views } from "../config/views.js";
 import argon2 from "argon2";
 import jwt from "jsonwebtoken";
-import dotenv from "dotenv"
-dotenv.config()
 
 export const editProfile = async(req, res) => {
     try {
