@@ -6,8 +6,6 @@ import cookieParser from "cookie-parser";
 import fileUpload from "express-fileupload";
 import todolistRouter from "./routes/todolistRouter.js"
 import { cekAuth } from "./middleware/middleware.js";
-import dotenv from "dotenv"
-dotenv.config()
 
 const app = express();
 
