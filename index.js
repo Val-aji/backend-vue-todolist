@@ -16,7 +16,7 @@ app.use(fileUpload())
 app.use("/client",clientRouter)
 app.use("/", todolistRouter)
 
-app.get("/", (req, res) => {
+app.get("/tes", (req, res) => {
     res.send("Server success running")
 })
 
