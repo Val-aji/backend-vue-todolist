@@ -1,0 +1,40 @@
+{
+  "name": "backend-vue-todolist",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Menggunakan teknologi VueJS, TailwindCSS dan backendnya NodeJS",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon node index.js",
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Val-aji/backend-vue-todolist.git"
+  },
+  "keywords": [
+    "\"backend",
+    "vue",
+    "todolist\""
+  ],
+  "author": "Nouval Aji Satrio",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Val-aji/backend-vue-todolist/issues"
+  },
+  "homepage": "https://github.com/Val-aji/backend-vue-todolist#readme",
+  "dependencies": {
+    "argon2": "^0.30.3",
+    "body-parser": "^1.20.2",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "4.16.0",
+    "express-fileupload": "^1.4.0",
+    "jsonwebtoken": "^9.0.0",
+    "mysql2": "^3.2.0",
+    "nodemon": "^2.0.21",
+    "sequelize": "^6.29.3"
+  }
+}
