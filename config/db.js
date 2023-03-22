@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize";
-
+import mysql2 from "mysql2"
 
 const DB_NAME = "nouvalaj_warungonline"
 const DB_HOST = "localhost"
@@ -13,7 +13,8 @@ const db = new Sequelize({
   database: DB_NAME,
   dialect: "mysql",
   port: DB_PORT,
-  host: DB_HOST
+  host: DB_HOST,
+  dialectModule: mysql2
 })
 
 db.authenticate()
