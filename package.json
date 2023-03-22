@@ -4,6 +4,9 @@
   "type": "module",
   "description": "Menggunakan teknologi VueJS, TailwindCSS dan backendnya NodeJS",
   "main": "index.js",
+  "engines": {
+    "node": "16.x"
+  },
   "scripts": {
     "dev": "nodemon node index.js",
     "start": "node index.js",
