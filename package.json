@@ -5,7 +5,7 @@
   "description": "Menggunakan teknologi VueJS, TailwindCSS dan backendnya NodeJS",
   "main": "index.js",
   "engines": {
-    "node": "16.x"
+    "node": "18.x"
   },
   "scripts": {
     "dev": "nodemon node index.js",
