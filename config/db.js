@@ -1,5 +1,6 @@
 import { Sequelize } from "sequelize";
 
+
 const DB_NAME = "nouvalaj_warungonline"
 const DB_HOST = "localhost"
 const DB_PASSWORD = "6Fs+xDpD@MIb"

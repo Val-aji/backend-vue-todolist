@@ -5,7 +5,7 @@ import { register } from "./controllers/clientControllers.js";
 import cookieParser from "cookie-parser";
 import fileUpload from "express-fileupload";
 import todolistRouter from "./routes/todolistRouter.js"
-import { cekAuth } from "./middleware/middleware.js";
+
 
 const app = express();
 
