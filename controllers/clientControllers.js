@@ -1,6 +1,6 @@
 import clientModels from "../models/clientModels.js";
 import { views } from "../config/views.js";
-//import argon2 from "argon2";
+import argon2 from "argon2";
 import jwt from "jsonwebtoken";
 
 export const editProfile = async(req, res) => {
@@ -16,6 +16,7 @@ export const editProfile = async(req, res) => {
             {namaLengkap, bio},
             {where: {username}}
         )
+
         views(res, 200, "change data success")
     } catch (error) {
         views(res, 400, "change data invalid", {error, message: error,message})
@@ -47,8 +48,8 @@ export const login = async(req, res) => {
 
         if(!dataUser) return views(res, 404, "username tidak ditemukan", null)
         
-        //const newPassword = await argon2.verify(dataUser.password, password)
-        if(password !== dataUser.password) return views(res, 401, "Password salah!",null)
+        const newPassword = await argon2.verify(dataUser.password, password)
+        if(!newPassword) return views(res, 401, "Password salah!",null)
         
         const token = jwt.sign({id: dataUser.id}, process.env.SECRET_KEY)
         const obj = {
@@ -60,6 +61,7 @@ export const login = async(req, res) => {
             {token},
             {where: {username}}
         )
+        
         views(res, 200, "Login Berhasil", obj)
     } catch (error) {
         views(res, 400, "Login Invalid", {error, message: error.message})
@@ -76,7 +78,7 @@ export const register = async(req, res) => {
         })
         if(dataDB) return views(res, 409, "email telah ada")
         const newPassword = await argon2.hash(password)
-        if(!newPassword) return views(  res, 500, "hash password failed")
+        if(!newPassword) return views(res, 500, "hash password failed")
 
         await clientModels.create({
             username,

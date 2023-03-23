@@ -7,6 +7,6 @@ const router = express.Router()
 router.post("/getData", cekAuth, getData)
 router.post("/todolist", cekAuth, insertData)
 router.post("/selesai", cekAuth, selesai)
-router.delete("/todolist", cekAuth, deleteData)
+router.post("/todolist/delete", cekAuth, deleteData)
 
 export default router
