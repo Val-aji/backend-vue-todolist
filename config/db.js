@@ -7,11 +7,11 @@ import mysql2 from "mysql2"
 // const DB_PORT = 3306
 // const DB_USER = "root"
 
-const DB_HOST = process.env.DB_HOST || "megatron.idserverhost.com"
-const DB_PORT = process.env.DB_PORT || 3306
-const DB_NAME = process.env.DB_NAME || "nouvalaj_todolist"
-const DB_USER = process.env.DB_USER || "nouvalaj_admin"
-const DB_PASSWORD = process.env.DB_PASSWORD || "Y0i@I2cVz(-G"
+const DB_HOST = process.env.DB_HOST 
+const DB_PORT = process.env.DB_PORT 
+const DB_NAME = process.env.DB_NAME 
+const DB_USER = process.env.DB_USER 
+const DB_PASSWORD = process.env.DB_PASSWORD 
 
 const db = new Sequelize({
   username: DB_USER,
