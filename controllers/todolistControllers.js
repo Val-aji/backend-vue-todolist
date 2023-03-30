@@ -33,7 +33,8 @@ export const insertData = async(req, res) => {
         })
         if(!userDB) return views(res, 404, "username tidak ditemukan!")
 
-        const tanggalMulai = new Date().toLocaleString("ID-id", {timezone: "Asia/Jakarta"})
+        // const tanggalMulai = new Date().toLocaleString("ID-id", {timezone: "Asia/Jakarta"})
+        const tanggalMulai = new Date().toString()
 
         const result = await todolistModels.create({
             username, title, status: false, tanggalMulai
@@ -61,7 +62,7 @@ export const selesai = async(req, res) => {
         })
         if(!result) return views(res, 404, "data dengan id " + id + " tidak ditemukan")
 
-        const tanggalBerakhir = new Date().toLocaleString("ID-id", {timezone: "asia/jakarta"})
+        const tanggalBerakhir = new Date().toString()
         await todolistModels.update(
             {status: true, tanggalBerakhir},
             {
