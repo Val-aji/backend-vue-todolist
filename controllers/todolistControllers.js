@@ -8,13 +8,14 @@ export const getData = async(req, res) => {
         const {username} = req.body
 
         const userDB = await clientModels.findOne({
-            where: {username}
+            where: {username},
         })
 
         if(!userDB) return views(res, 404, "username tidak ditemukan")
 
         const result = await todolistModels.findAll({
-            where: {username}
+            where: {username},
+            order: [["id", "DESC"]]
         })
 
         views(res, 200, "get data success", result)
@@ -26,15 +27,14 @@ export const getData = async(req, res) => {
 }
 export const insertData = async(req, res) => {
     try {
-        const {title, username} = req.body
+        const {title, username, tanggal} = req.body
 
         const userDB = await clientModels.findOne({
             where: {username}
         })
         if(!userDB) return views(res, 404, "username tidak ditemukan!")
 
-        // const tanggalMulai = new Date().toLocaleString("ID-id", {timezone: "Asia/Jakarta"})
-        const tanggalMulai = new Date().toString()
+        const tanggalMulai = tanggal || new Date().toLocaleString("ID-id", {timezone: "Asia/Jakarta"})
 
         const result = await todolistModels.create({
             username, title, status: false, tanggalMulai
@@ -43,13 +43,14 @@ export const insertData = async(req, res) => {
         views(res, 201, "data todolist berhasil ditambahkan", result)
 
     } catch (error) {
+        console.log({error})
         views(res, 400, "Insert Todolist Invalid", {error, message: error.message})
     }
 }
 
 export const selesai = async(req, res) => {
     try {
-        const {username, id} = req.body
+        const {id, username, tanggal} = req.body
         
         const userDB = await clientModels.findOne({
             where: {username}
@@ -62,7 +63,7 @@ export const selesai = async(req, res) => {
         })
         if(!result) return views(res, 404, "data dengan id " + id + " tidak ditemukan")
 
-        const tanggalBerakhir = new Date().toString()
+        const tanggalBerakhir = tanggal || new Date().toLocaleString("ID-id", {timezone: "Asia/Jakarta"})
         await todolistModels.update(
             {status: true, tanggalBerakhir},
             {
@@ -93,6 +94,6 @@ export const deleteData = async(req, res) => {
         console.log({result})
         views(res, 200, "delete berhasil")
     } catch (error) {
-        views(res, 400, "Delete Data Success")
+        views(res, 400, {error: error.message, message: "deleteData gagal"})
     }
 }
