@@ -9,7 +9,7 @@ export const cekAuth = async(req, res, next) => {
 
         const result = jwt.verify(token, process.env.SECRET_KEY)
         
-        if(!result) return views(res, 401, "token invalid!")    
+        if(!result) return res.sendStatus(401)    
         
         if(result) return next()
 

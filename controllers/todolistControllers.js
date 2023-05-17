@@ -91,7 +91,7 @@ export const deleteData = async(req, res) => {
         const result = await todolistModels.destroy({
             where: {id:id, username}
         })
-        console.log({result})
+        
         views(res, 200, "delete berhasil")
     } catch (error) {
         views(res, 400, {error: error.message, message: "deleteData gagal"})
